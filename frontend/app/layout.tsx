@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} h-full relative bg-gray-900`}>
+      <body className={`${inter.className} h-full flex flex-col bg-gray-900`}>
           <Header />
           {children}
       </body>

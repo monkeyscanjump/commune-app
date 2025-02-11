@@ -7,7 +7,14 @@
   background-color: black; /* Add this line */
 }
 
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
   background-color: black; /* Add this line */
   color: white; /* Optional: for better text visibility */
+  overflow-x: hidden;
+  overflow-y: auto;
 }

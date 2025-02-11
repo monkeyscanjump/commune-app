@@ -35,7 +35,7 @@ export const Footer = () => {
     <footer className='mt-8 bg-transparent'>
       <div className='mx-auto flex max-w-7xl flex-col items-center overflow-hidden px-6 py-12 lg:px-8'>
 
-          <div className="flex items-center space-x-4 ml-4">
+          <div className="flex items-center space-x-4">
             {navigation.social.map((item) => (
               <a
                 key={item.name}

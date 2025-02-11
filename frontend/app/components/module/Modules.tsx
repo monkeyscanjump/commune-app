@@ -6,7 +6,7 @@ import { Client } from '@/app/utils/client'
 import { Loading } from '@/app/components/Loading'
 import ModuleCard from '@/app/components/module/ModuleCard'
 import { CreateModule } from '@/app/components/module/CreateModule'
-import { ModuleType, DefaultModule } from '@/app/types/module'
+import { ModuleType } from '@/app/types/module'
 // Helper to abbreviate keys
 export default function Modules() {
   const client = new Client()
@@ -42,9 +42,9 @@ export default function Modules() {
   }, [])
 
   return (
-    <div className='flex min-h-screen flex-col items-center bg-black py-10 font-mono text-gray-200'>
+    <div className='flex flex-col flex-grow items-center bg-black py-10 font-mono text-gray-200'>
       {error && (
-        <div className='mb-4 flex w-full max-w-md items-center justify-between rounded-lg bg-red-500/80 px-4 py-2 text-white shadow-lg'>
+        <div className='mb-4 flex w-full items-center justify-between rounded-lg bg-red-500/80 px-4 py-2 text-white shadow-lg'>
           <span>{error}</span>
           <button onClick={() => setError('')} className='ml-4'>
             ✕
@@ -52,7 +52,7 @@ export default function Modules() {
         </div>
       )}
 
-      <div className='mb-12 flex w-full max-w-3xl flex-col items-center gap-2 px-6 sm:flex-row sm:gap-4'>
+      <div className='mb-12 flex w-full flex-col items-center gap-2 sm:flex-row sm:gap-4'>
         {/* Search Input (Full Width on Mobile) */}
         <div className='relative w-full rounded-lg border border-green-500/30 bg-black/90 sm:flex-1'>
           <div className='absolute left-4 top-1/2 -translate-y-1/2 text-green-400'>
@@ -107,19 +107,19 @@ export default function Modules() {
       </div>
 
       {/* Actual modules listing */}
-      <div className='min-h-screen w-full max-w-full overflow-y-auto p-10 px-4'>
+      <div className='flex-grow flex items-center justify-center w-full max-w-full'>
         {loading && <Loading />}
-        {!loading && filteredModules.length === 0 && (
+        {!loading && filteredModules.length === 0 ? (
           <div className='py-4 text-center text-gray-400'>
             {searchTerm ? 'No modules found.' : 'No modules available.'}
           </div>
+        ) : (
+          <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
+            {filteredModules.map((m) => (
+              <ModuleCard key={m.key} module={m} />
+            ))}
+          </div>
         )}
-
-        <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
-          {filteredModules.map((m) => (
-            <ModuleCard key={m.key} module={m} />
-          ))}
-        </div>
       </div>
 
       <Footer />

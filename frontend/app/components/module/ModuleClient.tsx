@@ -3,8 +3,6 @@
 import { useEffect, useState } from 'react'
 import { Client } from '@/app/utils/client'
 import { Loading } from '@/app/components/Loading'
-import ModuleCard from '@/app/components/module/ModuleCard'
-import { CreateModule } from '@/app/components/module/CreateModule'
 import { ModuleType } from '@/app/types/module'
 import {
   CodeBracketIcon,
@@ -74,7 +72,7 @@ export default function ModulesClient({ module_name, code, api }: { module_name 
   if (loading) return <Loading />
   if (error || !module)
     return (
-      <div className='flex min-h-screen items-center justify-center bg-black text-red-500'>
+      <div className='flex items-center justify-center bg-black text-red-500'>
         {error}
       </div>
     )
@@ -84,9 +82,8 @@ export default function ModulesClient({ module_name, code, api }: { module_name 
       { id: 'api', label: 'API', icon: ServerIcon },
     ]
 
-  
   return (
-    <div className='min-h-screen bg-gradient-to-b from-black to-gray-950 p-6 font-mono text-green-400'>
+    <div className='bg-gradient-to-b from-black to-gray-950 p-6 font-mono text-green-400'>
       <div className='mx-auto max-w-7xl space-y-6'>
         {/* Header Card */}
         <div className='overflow-hidden rounded-2xl border border-green-500/30 bg-black/90 shadow-xl backdrop-blur-sm'>
@@ -194,10 +191,10 @@ export default function ModulesClient({ module_name, code, api }: { module_name 
                     placeholder='Search in files...'
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className='w-full rounded-xl border border-green-500/30 bg-black/90 
-                             px-6 py-4 text-green-400
-                             placeholder-gray-500 transition-all
-                             focus:border-green-400 focus:outline-none'
+                    className='w-full rounded-xl border border-green-500/30 bg-black/90
+                      px-6 py-4 text-green-400
+                      placeholder-gray-500 transition-all
+                      focus:border-green-400 focus:outline-none'
                   />
                 </div>
                 {filteredFiles.map(([path, content]) => (
@@ -216,9 +213,9 @@ export default function ModulesClient({ module_name, code, api }: { module_name 
         <div className='flex flex-wrap items-center justify-between gap-2 sm:gap-4'>
           <Link
             href={"/"}
-            className='flex w-full items-center justify-center space-x-2 rounded-xl border 
-               border-green-500/30 bg-black/90 px-6 py-3 text-center
-               text-green-400 transition-all hover:bg-green-900/20 sm:w-auto'
+            className='flex w-full items-center justify-center space-x-2 rounded-xl border
+              border-green-500/30 bg-black/90 px-6 py-3 text-center
+              text-green-400 transition-all hover:bg-green-900/20 sm:w-auto'
           >
             <ArrowLeftIcon className='h-5 w-5' />
             <span>Back to Modules</span>
@@ -226,14 +223,14 @@ export default function ModulesClient({ module_name, code, api }: { module_name 
 
           <div className='flex w-full flex-wrap justify-center gap-2 sm:w-auto sm:justify-end sm:gap-4'>
             <button
-              className='w-full rounded-xl border border-green-500/30 bg-black/90 px-6 
-                        py-3 text-center text-green-400 transition-all hover:bg-green-900/20 sm:w-auto'
+              className='w-full rounded-xl border border-green-500/30 bg-black/90 px-6
+                py-3 text-center text-green-400 transition-all hover:bg-green-900/20 sm:w-auto'
             >
               Documentation
             </button>
             <button
-              className='w-full rounded-xl border border-green-500/30 bg-black/90 px-6 
-                        py-3 text-center text-green-400 transition-all hover:bg-green-900/20 sm:w-auto'
+              className='w-full rounded-xl border border-green-500/30 bg-black/90 px-6
+                py-3 text-center text-green-400 transition-all hover:bg-green-900/20 sm:w-auto'
             >
               Report Issue
             </button>

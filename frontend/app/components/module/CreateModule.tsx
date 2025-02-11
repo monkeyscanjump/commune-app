@@ -5,12 +5,12 @@ import { ModuleType, DefaultModule } from '@/app/types/module'
 import { Client } from '@/app/utils/client'
 
 const github_prefix: string = 'https://github.com/'
-export const CreateModule = ({ 
+export const CreateModule = ({
   onClose,
-  onSuccess 
-}: { 
+  onSuccess
+}: {
   onClose: () => void
-  onSuccess: () => void 
+  onSuccess: () => void
 }) => {
   const [newModule, setNewModule] = useState<ModuleType>(DefaultModule)
   const [loading, setLoading] = useState(false)
@@ -27,8 +27,7 @@ export const CreateModule = ({
   const handleTagInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' || e.key === ',') {
       e.preventDefault()
-      const newTag = tagInput.trim().toLowerCase()
-      // make sure its all lowercase  
+      const newTag = tagInput.trim().toLowerCase() // make sure its all lowercase
 
       if (newTag && !newModule.tags.includes(newTag)) {
         handleFormChange('tags', [...newModule.tags, newTag])
@@ -108,11 +107,11 @@ export const CreateModule = ({
             onKeyDown={handleTagInput}
             className="w-full px-4 py-2 bg-black/90 text-green-400 border focus:outline-none focus:border-green-400 border-green-500/30 rounded"
           />
-          
+
           {/* Tags display */}
           <div className="flex flex-wrap gap-2">
             {newModule.tags.map((tag, index) => (
-              <span 
+              <span
                 key={index}
                 className="px-2 py-1 bg-green-900/20 text-green-400 rounded-full text-sm flex items-center"
               >

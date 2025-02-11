@@ -1,7 +1,6 @@
 'use client'
 import Link from 'next/link'
 import { useState, FormEvent } from 'react'
-import config from '@/config.json'
 import { Wallet } from '@/app/utils/wallet'
 import { CopyButton } from '@/app/components/CopyButton'
 import { cryptoWaitReady } from '@polkadot/util-crypto'
@@ -66,7 +65,8 @@ export const Header = () => {
                   placeholder="enter password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="px-4 py-2 bg-black/60 border border-green-500/30 rounded text-green-400 text-sm focus:outline-none focus:border-green-400"
+                  className="px-4 py-2 bg-black/60 border border-green-500/30 rounded text-green-400 text-sm h-full
+                    focus:outline-none focus:border-green-400"
                 />
                 <button
                   type="submit"

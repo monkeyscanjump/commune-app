@@ -59,18 +59,18 @@ export default function ModuleCard({ module }: { module: ModuleType }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className='group relative flex min-h-[320px] cursor-pointer
-                 flex-col rounded-lg border
-                 border-green-500/30 bg-black/90 p-6
-                 font-mono transition-all duration-300 hover:border-green-400'
+        flex-col rounded-lg border
+        border-green-500/30 bg-black/90 p-6
+        font-mono transition-all duration-300 hover:border-green-400'
     >
       {/* Terminal Header with Module Name and Key */}
       <div
-        className='absolute left-0 right-0 top-0 flex items-center 
-                    rounded-t-lg border-b border-green-500/30 bg-black/90 px-6 py-4'
+        className='absolute left-0 right-0 top-0 flex items-center
+          rounded-t-lg border-b border-green-500/30 bg-black/90 px-6 py-4'
       >
         <div className='flex w-full flex-col gap-3'>
           <div
-            className='absolute left-0 right-0 top-0 flex items-center 
+            className='absolute left-0 right-0 top-0 flex items-center
               rounded-t-lg border-b border-green-500/30 bg-black/90 px-6 py-4'
           >
             <div className='flex w-full items-center justify-between'>
@@ -144,8 +144,8 @@ export default function ModuleCard({ module }: { module: ModuleType }) {
             {module.tags.map((tag, index) => (
               <span
                 key={index}
-                className='rounded-full border border-green-500/30 bg-green-900/20 px-3 
-                         py-1 text-xs text-green-400'
+                className='rounded-full border border-green-500/30 bg-green-900/20 px-3
+                  py-1 text-xs text-green-400'
               >
                 #{tag}
               </span>
@@ -157,18 +157,18 @@ export default function ModuleCard({ module }: { module: ModuleType }) {
         <div className='mt-auto grid grid-cols-3 gap-3'>
           <Link
             href={`/module/${module.name}?code=true`}
-            className='flex items-center justify-center gap-2 rounded 
-                      border border-green-500/30 px-3
-                      py-2 text-xs text-green-400 transition-colors hover:bg-green-900/20'
+            className='flex items-center justify-center gap-2 rounded
+              border border-green-500/30 px-3
+              py-2 text-xs text-green-400 transition-colors hover:bg-green-900/20'
           >
             <CodeBracketIcon className='h-4 w-4' />
             <span>code</span>
           </Link>
           {module.url && (
             <button
-              className='flex items-center justify-center gap-2 rounded 
-                        border border-green-500/30 px-3
-                        py-2 text-xs text-green-400 transition-colors hover:bg-green-900/20'
+              className='flex items-center justify-center gap-2 rounded
+                border border-green-500/30 px-3
+                py-2 text-xs text-green-400 transition-colors hover:bg-green-900/20'
             >
               <GlobeAltIcon className='h-4 w-4' />
               <span>app</span>
@@ -176,9 +176,9 @@ export default function ModuleCard({ module }: { module: ModuleType }) {
           )}
           <Link
             href={`/module/${module.name}?api=true`}
-            className='flex items-center justify-center gap-2 rounded 
-                      border border-green-500/30 px-3
-                      py-2 text-xs text-green-400 transition-colors hover:bg-green-900/20'
+            className='flex items-center justify-center gap-2 rounded
+              border border-green-500/30 px-3
+              py-2 text-xs text-green-400 transition-colors hover:bg-green-900/20'
           >
             <ServerIcon className='h-4 w-4' />
             <span>api</span>

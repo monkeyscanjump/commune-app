@@ -6,6 +6,6 @@ export default async function ModulesPage({ params, searchParams }: { params : {
   const code = searchParams.code === 'true'
   const api = searchParams.api === 'true'
   return (
-        <ModulesClient module_name={module} code={code} api={api}/>
+    <ModulesClient module_name={module} code={code} api={api}/>
   )
 }

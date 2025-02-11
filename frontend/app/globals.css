@@ -13,8 +13,12 @@ html {
 }
 
 body {
-  background-color: black; /* Add this line */
-  color: white; /* Optional: for better text visibility */
+  background-color: black;
+  color: white;
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+button {
+  user-select: none;
 }

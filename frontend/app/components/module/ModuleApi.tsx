@@ -29,7 +29,7 @@ export const ModuleApi = ({ schema, module }: ApiProps) => {
   // Handle parameter input change
   const handleParamChange = (paramName: string, value: string) => {
     setParams({ ...params, [paramName]: value })
-  } 
+  }
   // Execute the selected function
   const executeFunction = async () => {
     setLoading(true)
@@ -57,9 +57,9 @@ export const ModuleApi = ({ schema, module }: ApiProps) => {
             setParams({})
             setResponse(null)
           }}
-          className="w-full px-4 py-2 bg-black/90 text-green-400 
-                   border border-green-500/30 rounded-lg
-                   focus:outline-none focus:border-green-400"
+          className="w-full px-4 py-2 bg-black/90 text-green-400
+            border border-green-500/30 rounded-lg
+            focus:outline-none focus:border-green-400"
         >
           <option value="">Select a function</option>
           {Object.keys(schema).map(fn => (
@@ -85,9 +85,9 @@ export const ModuleApi = ({ schema, module }: ApiProps) => {
                 value={params[param] || ''}
                 onChange={(e) => handleParamChange(param, e.target.value)}
                 placeholder={`Enter ${param}`}
-                className="w-full px-4 py-2 bg-black/90 text-green-400 
-                         border border-green-500/30 rounded-lg
-                         focus:outline-none focus:border-green-400"
+                className="w-full px-4 py-2 bg-black/90 text-green-400
+                  border border-green-500/30 rounded-lg
+                  focus:outline-none focus:border-green-400"
               />
             </div>
           ))}
@@ -95,10 +95,10 @@ export const ModuleApi = ({ schema, module }: ApiProps) => {
           <button
             onClick={executeFunction}
             disabled={loading}
-            className="w-full px-4 py-2 bg-black/90 text-green-400 
-                     border border-green-500/30 rounded-lg
-                     hover:bg-green-900/20 transition-colors
-                     disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full px-4 py-2 bg-black/90 text-green-400
+              border border-green-500/30 rounded-lg
+              hover:bg-green-900/20 transition-colors
+              disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? 'Executing...' : 'Execute Function'}
           </button>

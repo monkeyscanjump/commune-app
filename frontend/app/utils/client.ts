@@ -57,17 +57,17 @@ export class Client {
   ): Promise<any> {
     let requestHeaders: Record<string, string> = {};
     let body: string | FormData;
-    
+
     if (params instanceof FormData) {
       body = params; // FormData should not have Content-Type manually set
     } else {
       body = JSON.stringify(params);
       requestHeaders['Content-Type'] = 'application/json';
     }
-    
+
     requestHeaders = { ...requestHeaders, ...headers };
     const url: string = `${this.url}/${fn}`;
-    
+
     try {
       const response = await fetch(url, {
         method: 'POST',

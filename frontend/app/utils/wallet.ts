@@ -7,7 +7,7 @@ import {
   } from '@polkadot/util-crypto'
   import { hexToU8a, u8aToHex } from '@polkadot/util'
   import { secp256k1 } from '@noble/curves/secp256k1'
-  
+
   // Define the structure of a wallet object
   export interface WalletType {
     address: string
@@ -15,16 +15,16 @@ import {
     public_key: string
     private_key: string
   }
-  
+
   // Define allowed signature types
   type signature_t = 'sr25519' | 'ecdsa'
-  
+
   export class Wallet {
     private private_key: string // Stores the private key of the wallet
     public public_key: string // Stores the public key of the wallet
     public address: string // Stores the wallet's address
     public signiture: signature_t // Defines the signature type used by the wallet
-  
+
     /**
      * Constructs a new Wallet instance using a password as the seed.
      * @param password - The password used to generate keys.
@@ -40,7 +40,7 @@ import {
       this.address = address
       this.signiture = signiture
     }
-  
+
     /**
      * Generates a wallet from a password.
      * @param password - The password used to derive the keypair.
@@ -54,17 +54,17 @@ import {
       if (!password || typeof password !== 'string') {
         throw new Error('Invalid password provided')
       }
-  
+
       // Derive a seed from the password using Blake2 hashing
       const seedHex = blake2AsHex(password, 256)
       const seedBytes = hexToU8a(seedHex)
       let wallet: WalletType
-  
+
       if (crypto_type === 'sr25519') {
         // Generate sr25519 keypair
         const keyPair = sr25519PairFromSeed(seedBytes)
         const address = encodeAddress(keyPair.publicKey, 42)
-  
+
         wallet = {
           address,
           crypto_type: 'sr25519',
@@ -74,7 +74,7 @@ import {
       } else if (crypto_type === 'ecdsa') {
         // Generate ECDSA keypair using secp256k1
         const public_key = secp256k1.getPublicKey(seedHex)
-  
+
         wallet = {
           address: u8aToHex(public_key),
           crypto_type: 'ecdsa',
@@ -84,10 +84,10 @@ import {
       } else {
         throw new Error('Unsupported crypto type')
       }
-  
+
       return wallet
     }
-  
+
     /**
      * Signs a message using the wallet's private key.
      * @param message - The message to sign.
@@ -98,7 +98,7 @@ import {
         throw new Error('Empty message cannot be signed')
       }
       const messageBytes = this.encode(message)
-  
+
       if (this.signiture === 'sr25519') {
         const signature = sr25519Sign(messageBytes, {
           publicKey: hexToU8a(this.public_key),
@@ -116,7 +116,7 @@ import {
         throw new Error('Unsupported crypto type')
       }
     }
-  
+
     /**
      * Verifies a signature against a message and public key.
      * @param message - The original message.
@@ -134,7 +134,7 @@ import {
       }
       const sigType = this.signiture
       const messageBytes = new TextEncoder().encode(message)
-  
+
       if (sigType === 'sr25519') {
         return sr25519Verify(
           messageBytes,
@@ -152,7 +152,7 @@ import {
         throw new Error('Unsupported crypto type')
       }
     }
-  
+
     /**
      * Encodes a string message into a Uint8Array.
      * @param message - The message to encode.
@@ -161,7 +161,7 @@ import {
     encode(message: string): Uint8Array {
       return new Uint8Array(Buffer.from(message))
     }
-  
+
     /**
      * Decodes a Uint8Array back into a string.
      * @param message - The Uint8Array to decode.

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { Header } from './components'
+import { Footer } from './components'
 
 import "react-responsive-modal/styles.css"
 import "@/app/globals.css"
@@ -22,9 +23,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} h-full flex flex-col bg-gray-900`}>
+      <body className={`${inter.className} h-full flex flex-col`}>
           <Header />
           {children}
+          <Footer />
       </body>
     </html>
   )
